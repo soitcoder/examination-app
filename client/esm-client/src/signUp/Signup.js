@@ -9,11 +9,14 @@ import {
   Select,
   notification,
 } from "antd";
+
+
 import "./Signup.css";
 import { connect } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { signUpUser, accountCreated } from "../actions/authActions";
 import { Link } from "react-router-dom";
+import logo from '../assets/logo.png'
 
 function Signup(props) {
   const [showSelect, setShowSelect] = useState(false);
@@ -58,7 +61,11 @@ function Signup(props) {
     <>
       <Row justify="center" align="middle" className="hero">
         <Col xs={22} sm={22} md={8} lg={8} className="signup__container">
-          <p className="sub-title__signup">🎓 EMS</p>
+          <img style={{
+            width: "100px",
+            height: "100px"
+          }} src={logo}/>
+          <p className="sub-title__signup">YGGDRASIL</p>
           <Form
             name="basic"
             initialValues={{
@@ -122,7 +129,7 @@ function Signup(props) {
                 },
               ]}
             >
-              <Input type="tel" placeholder="7275XXXXXX" />
+              <Input  type="tel" placeholder="7275XXXXXX" />
             </Form.Item>
 
             <div className="element__wrapper">

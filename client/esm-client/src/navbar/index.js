@@ -4,7 +4,7 @@ import { Drawer, Button } from "antd";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import "./Navbar.css";
-
+import logo from '../assets/logo.png'
 
 
 class Navbar extends Component {
@@ -30,7 +30,19 @@ class Navbar extends Component {
     return (
       <nav className="menuBar">
         <div className="logo">
-          <Link >🎓 EMS</Link>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center"
+            }}
+          >
+          <img  style={{
+            display: "inline",
+            width: "100px",
+            height: "100px"
+          }} src={logo} />
+          <Link >YGGDRASIL</Link>
+          </div>
         </div>
         <div className="menuCon">
           <div className="leftMenu">

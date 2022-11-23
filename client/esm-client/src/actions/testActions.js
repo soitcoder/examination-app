@@ -73,11 +73,11 @@ export const fetchAttemptTests = (profileID) => async (dispatch) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
+      Authorization: ` ${localStorage.getItem("token")}`,
     },
   };
 
-  await fetch(`/student/attempt-tests/${profileID}`, requestOptions)
+  await fetch(`http://localhost:5000/student/attempt-tests/${profileID}`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data) {
@@ -102,11 +102,11 @@ export const fetchTests = (className) => async (dispatch) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
+      Authorization: ` ${localStorage.getItem("token")}`,
     },
   };
 
-  await fetch(`/student/tests/${className}`, requestOptions)
+  await fetch(`http://localhost:5000/student/tests/${className}`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data?.error?.name === "TokenExpiredError") {
@@ -160,12 +160,12 @@ export const submitTest = (data) => async (dispatch) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
+      Authorization: ` ${localStorage.getItem("token")}`,
     },
     body: JSON.stringify(postedData),
   };
 
-  await fetch(`/student/submit-test/${testID}`, requestOptions)
+  await fetch(`http://localhost:5000/student/submit-test/${testID}`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data) {
@@ -187,16 +187,20 @@ export const submitTest = (data) => async (dispatch) => {
 
 export const fetchTeacherTests = (profileID) => async (dispatch) => {
   dispatch(requestTeacherTests());
-
+  // const token = JSON.parse(localStorage.getItem('token'))
+  // console.log(token);
+  
   const requestOptions = {
     method: "GET",
+
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
+      Authorization: `${localStorage.getItem("token")}`,
     },
   };
 
-  await fetch(`/teacher/tests/${profileID}`, requestOptions)
+  // console.log('helllo')
+  await fetch(`http://localhost:5000/teacher/tests/${profileID}`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data) {
@@ -209,7 +213,9 @@ export const fetchTeacherTests = (profileID) => async (dispatch) => {
     })
     .catch((error) => {
       //Do something with the error if you want!
-      console.log(error);
+      console.log("Do something with the error if you want");
       dispatch(testsTeacherError());
     });
+
+    // console.log("world")
 };

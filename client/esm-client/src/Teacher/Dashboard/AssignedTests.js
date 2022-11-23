@@ -7,6 +7,7 @@ import { Skeleton } from "antd";
 import "./index.css";
 
 function AssignedTests(props) {
+  console.log("Hello 2")
   let { tests, isLoading, profileID, trimLength } = props;
   if (tests)
     tests =
@@ -17,6 +18,7 @@ function AssignedTests(props) {
     console.log("fired");
   }, []);
 
+  console.log(tests);
   return (
     <>
       <div className="left__teacher__header">

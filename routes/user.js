@@ -19,8 +19,8 @@ var transporter = nodemailer.createTransport(
     service: "gmail",
     host: "smtp.gmail.com",
     auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
+      user: "armanyppph@gmail.com",
+      pass: "ofpmnegrftigihxb",
     },
   })
 );
@@ -41,6 +41,8 @@ router.post(
   ],
   async (req, res) => {
     const errors = validationResult(req);
+
+
     if (!errors.isEmpty()) {
       return res.status(400).json({
         errors: errors.array(),
@@ -78,10 +80,11 @@ router.post(
         className,
         section,
       });
-
+      // console.log("Line 83")
       const salt = await bcrypt.genSalt(10);
       user.password = await bcrypt.hash(password, salt);
-
+      // console.log(tempPwd);
+      // user.password=tempPwd;
       const userData = await user.save();
 
       switch (role) {
@@ -115,7 +118,7 @@ router.post(
           console.log("OK 200");
       }
 
-      // console.log(userData);
+      console.log(userData);
 
       const payload = {
         user: {
@@ -125,13 +128,12 @@ router.post(
 
       jwt.sign(
         payload,
-        process.env.JWT_SECRET,
+        "sohel",
         {
           expiresIn: "3h",
         },
         (err, token) => {
           if (err) throw err;
-
           //cookie
           res.status(200).json({
             token,
@@ -139,6 +141,9 @@ router.post(
           });
         }
       );
+
+
+
     } catch (err) {
       console.log(err.message);
       res.status(500).send("Error in Saving");
@@ -161,6 +166,8 @@ router.post(
     }),
   ],
   async (req, res) => {
+
+    console.log("INSIDE THE LOGIN")
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -178,8 +185,8 @@ router.post(
         return res.status(400).json({
           message: "User Not Exist",
         });
-
       const isMatch = await bcrypt.compare(password, user.password);
+
       if (!isMatch)
         return res.status(400).json({
           message: "Incorrect Password !",
@@ -188,6 +195,9 @@ router.post(
       const payload = {
         user,
       };
+
+
+      console.log(payload)
 
       switch (user.role) {
         case STUDENT:
@@ -213,7 +223,7 @@ router.post(
 
       jwt.sign(
         payload,
-        process.env.JWT_SECRET,
+        "sohel",
         {
           expiresIn: "3h",
           //3 hrs
@@ -438,6 +448,8 @@ router.post(
           });
         }
       );
+
+
     } catch (e) {
       console.error(e);
       res.status(500).json({
@@ -457,7 +469,7 @@ router.get("/confirm/:token", async (req, res) => {
   const token = req.params.token;
   //console.log("routed")
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "sohel");
     req.user = decoded.user;
 
     await User.updateOne({ _id: req.user.id }, { isVerified: true }, function (

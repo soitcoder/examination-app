@@ -5,6 +5,7 @@ import "./TestInstruction.css";
 import { FaArrowCircleRight } from "react-icons/fa";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
+import logo from '../assets/logo.png'
 
 function TestInstruction(props) {
   //console.log(props.selectedTest);
@@ -112,7 +113,7 @@ function TestInstruction(props) {
                   <div className="instructions__wrapper__right">
                     <div className="ems__log__wrapper">
                       <img
-                        src="/ems-logo.png"
+                        src={logo}
                         className="ems__logo"
                         alt="ems-logo"
                       />

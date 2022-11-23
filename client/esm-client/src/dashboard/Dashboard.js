@@ -6,6 +6,7 @@ import ResultCard from "./ResultCard";
 import "./Dashboard.css";
 
 function Dashboard(props) {
+  console.log("hello")
   const { studentClassName, profileID, userInfo } = props;
   const trimLength = 8;
 

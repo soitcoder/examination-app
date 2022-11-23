@@ -56,7 +56,7 @@ export const updateTimeSpentByStudent = (values) => (dispatch) => {
     body: JSON.stringify(data),
   };
 
-  fetch(`/student/update-test-status/${testID}`, requestOptions)
+  fetch(`http://localhost:5000/student/update-test-status/${testID}`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data) {

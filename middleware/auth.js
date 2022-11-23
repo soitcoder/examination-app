@@ -1,15 +1,18 @@
 const jwt = require("jsonwebtoken");
-require('dotenv').config()
+// require('dotenv').config()
 
 module.exports = function (req, res, next) {
+
+  console.log("THE REQUESTION IS ", req);
   const authHeader = req.header("Authorization").split(" ");
+  console.log(authHeader);
   const token = authHeader[1];
- // const token = req.cookies.jwt;
   if (!token) return res.status(401).json({ message: "Auth Error" });
 
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "sohel");
+    console.log("decoded", decoded)
     req.user = decoded.user;
     next();
   } catch (e) {

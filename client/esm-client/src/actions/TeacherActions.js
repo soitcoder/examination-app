@@ -67,7 +67,7 @@ export const submitTest = (values) => (dispatch) => {
     body: JSON.stringify(values),
   };
   //console.log("Success:", values);
-  fetch("/teacher/create-test", requestOptions)
+  fetch("http://localhost:5000/teacher/create-test", requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data?.error?.name === "TokenExpiredError") {
@@ -94,9 +94,10 @@ export const fetchAssignedTests = (profileID) => async (dispatch) => {
     },
   };
 
-  await fetch(`/teacher/tests/${profileID}`, requestOptions)
+  await fetch(`http://localhost:5000/teacher/tests/${profileID}`, requestOptions)
     .then((response) => response.json())
     .then((data) => {
+      console.log("data", data)
       if (data) {
         if (data?.error?.name === "TokenExpiredError") {
           dispatch(logoutUser());

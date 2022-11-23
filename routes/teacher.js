@@ -12,7 +12,8 @@ require("dotenv").config();
  * @description - Fetching All the tests that teacher assigned using testID
  */
 
-router.get("/tests/:profileID", auth, async (req, res) => {
+
+router.get("/tests/:profileID", auth , async (req, res) => {
   const profileID = req.params.profileID;
   console.log("teacher", profileID);
   try {
@@ -42,8 +43,13 @@ router.get("/tests/:profileID", auth, async (req, res) => {
  * @description - Fetching All the classes which are registered in Database
  */
 
+
 router.get("/classes", auth, async (req, res) => {
-  console.log("fetch classes");
+  // console.log("fetch classes");
+  // console.log(req);
+
+  console.log("hello world ")
+
   try {
     await User.find({}, "className -_id", function (err, obj) {
       if (err) {
@@ -58,6 +64,7 @@ router.get("/classes", auth, async (req, res) => {
     console.log(err.message);
     res.status(500).send("Error in fetching Tests");
   }
+
 });
 
 /**

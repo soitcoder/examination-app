@@ -8,6 +8,9 @@
     background-color: var(--secondary);
     border-radius: 5px;
     box-shadow: 0 0 5px var(--box-shadow);
+    max-width: 10000px;
+    padding: 2rem;
+    height: 600px;
 }
 
 input#basic_email {

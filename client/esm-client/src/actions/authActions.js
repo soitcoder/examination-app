@@ -127,7 +127,7 @@ export const loginUser = (values) => (dispatch) => {
     body: JSON.stringify(values),
   };
 
-  fetch("/user/login", requestOptions)
+  fetch("http://localhost:5000/user/login", requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data.token) {
@@ -149,11 +149,15 @@ export const signUpUser = (values) => (dispatch) => {
 
   const requestOptions = {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+    },
     body: JSON.stringify(values),
   };
-  //console.log("Success:", values);
-  fetch("/user/signup", requestOptions)
+  // console.log("Success:", values);
+  // console.log(requestOptions);
+  fetch("http://localhost:5000/user/signup", requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data.token) {
@@ -200,6 +204,8 @@ export const logoutUser = () => (dispatch) => {
   dispatch(requestLogout());
   dispatch(receiveLogout());
 };
+
+
 
 // export const verifyAuth = () => dispatch => {
 //   dispatch(verifyRequest());

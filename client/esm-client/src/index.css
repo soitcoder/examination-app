@@ -21,6 +21,8 @@ html {
   overflow-x: hidden
 }
 
+
+
 .primary {
   color: var(--primary);
   cursor: pointer;

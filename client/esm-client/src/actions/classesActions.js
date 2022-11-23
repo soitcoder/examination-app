@@ -24,15 +24,15 @@ const ClassesError = () => {
 
 export const fetchClasses = (values) => (dispatch) => {
   dispatch(requestClasses());
-
   const requestOptions = {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.getItem("token"),
+      Authorization: `${localStorage.getItem("token")}`,
     },
   };
-  fetch("/teacher/classes", requestOptions)
+  // console.log("requestOptions", requestOptions)
+  fetch("http://localhost:5000/teacher/classes", requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data?.error?.name === "TokenExpiredError") {

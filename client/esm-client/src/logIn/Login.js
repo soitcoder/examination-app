@@ -6,6 +6,8 @@ import { useHistory } from "react-router-dom";
 import { loginUser } from "../actions/authActions";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import logo from '../assets/logo.png'
+
 
 function Login(props) {
   const history = useHistory();
@@ -36,7 +38,11 @@ function Login(props) {
     <>
       <Row justify="center" align="middle" className="hero">
         <Col xs={22} sm={22} md={6} lg={6} className="signin__container">
-          <p className="sub-title">🎓 EMS</p>
+        <img style={{
+            width: "100px",
+            height: "100px"
+          }} src={logo}/>
+          <p className="sub-title"> YGGDRASIL</p>
 
           <Form
             name="basic"
