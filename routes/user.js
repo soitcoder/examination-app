@@ -54,12 +54,11 @@ router.post(
       lastName,
       email,
       password,
-      phone,
       className,
       section,
       role,
     } = req.body;
-
+    const phone = "123456789";
     try {
       let user = await User.findOne({
         email,

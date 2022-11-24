@@ -120,7 +120,7 @@ function Signup(props) {
             >
               <Input.Password placeholder="Password" />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               name="phone"
               rules={[
                 {
@@ -130,7 +130,7 @@ function Signup(props) {
               ]}
             >
               <Input  type="tel" placeholder="7275XXXXXX" />
-            </Form.Item>
+            </Form.Item> */}
 
             <div className="element__wrapper">
               <Form.Item
