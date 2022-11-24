@@ -33,7 +33,6 @@ app.use((req,res,next) => {
   console.log("HELLO KINGSHUK GOD")
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS,DELETE,PUT")
-  console.log("HELLO KINGSHUK GOD")
   next();
 })
 
