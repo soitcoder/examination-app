@@ -30,7 +30,6 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use((req,res,next) => {
-  console.log("HELLO KINGSHUK GOD")
   res.setHeader("Access-Control-Allow-Origin", "*")
   res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS,DELETE,PUT")
   next();
