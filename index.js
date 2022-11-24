@@ -37,6 +37,13 @@ app.use((req,res,next) => {
 })
 
 
+app.get("/", (req,res,next) => {
+  res.send({
+    message : "HELLO"
+  })
+  next();
+})
+
 
 
 app.use("/user", user);
