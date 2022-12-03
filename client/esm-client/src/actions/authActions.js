@@ -157,7 +157,7 @@ export const signUpUser = (values) => (dispatch) => {
   };
   // console.log("Success:", values);
   // console.log(requestOptions);
-  fetch("https://yggdrasil-hhiokpuzg-noobcode-69.vercel.app//user/signup", requestOptions)
+  fetch("http://localhost:5000/user/signup", requestOptions)
     .then((response) => response.json())
     .then((data) => {
       if (data.token) {

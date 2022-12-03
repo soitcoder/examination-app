@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 require('dotenv').config()
 const MONGOURI =
-"mongodb+srv://sohel:gs4AcE5gjurgwSrT@cluster0.fw9zcwp.mongodb.net/?retryWrites=true&w=majority"
+"mongodb+srv://soit_coder1:B5UKOtXAiIUKjy4h@cluster0.cpiywhg.mongodb.net/?retryWrites=true&w=majority"
 
-
+//B5UKOtXAiIUKjy4h
 
 const InitiateMongoServer = async () => {
   try {
